@@ -1,0 +1,28 @@
+{
+    "data":{
+        "train":"dataset\\train",
+        "valid":"dataset\\valid",
+        "test":"dataset\\test"
+    },
+    "model":{
+        "network":"vgg16",
+        "pre_weight":"pre_weight/vgg16.h5",
+        "version":"vgg16_v0",
+        "nclass":5,
+        "image_size":224,
+        "output":{
+            "classmap":"out_model\\vgg16_v0\\classmap.json",
+            "tuned_model":"out_model\\vgg16_v0\\tuned.h5",
+            "tuned_model_pb":"out_model\\vgg16_v0\\export_pb",
+            "tb_logs":"out_model\\vgg16_v0\\logs",
+            "checkpoint":"out_model\\vgg16_v0\\checkpoint\\model_ex-{epoch:03d}_acc-{accuracy:03f}.h5"
+        }
+    },
+    "params":{
+        "init_lr":0.001,
+        "epochs":20,
+        "batch_size":64,
+        "include_top":true,
+        "ckpt_interval":5
+    }
+}
