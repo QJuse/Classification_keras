@@ -4,3 +4,4 @@ dataset/
 .pytest_cache/
 tools/
 .idea/
+.vs*

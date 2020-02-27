@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+"""
+author: zhengqj@fotile.com
+"""
 import tensorflow as tf
 from tensorflow.keras.applications.vgg16 import VGG16
 from tensorflow.keras.applications.inception_v3 import InceptionV3
@@ -11,8 +15,7 @@ from tensorflow.keras.applications.nasnet import NASNetMobile
 import tensorflow.keras.layers as KL
 import tensorflow.keras.models as KM
 
-print("tf version {}, keras verion {}"\
-      .format(tf.__version__, tf.keras.__version__))
+assert tf.__version__.startswith('2'), 'please use tensorflow 2.0'
 
 MODELS = {
     'vgg16': VGG16,
@@ -29,7 +32,9 @@ MODELS = {
 
 class CustomModel(object):
     def __init__(self, network, pre_weight, nclass):
-        assert network in MODELS, "please use the right keras model"
+        assert network in MODELS, "please choose the right keras model, in, " \
+            "vgg16, resnet50, resnet101, densenet121, inception_v3," \
+            "nasnet, mobilenet, mobilenet_v2, inception_resnet"
         self.NetWork = MODELS[network]
         self.img_size = 299 if network.startswith('inception') else 224
         self.pre_weight = pre_weight
@@ -56,7 +61,6 @@ class CustomModel(object):
         model = KM.Model(inputs=base_model.input, outputs=y)
         return model
 
-
-
+__all__ = ['MODELS', 'CustomModel']
 
 
